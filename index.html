@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F3F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15171A" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=yes">
+<title>Italien · 14.–19. sept</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍋</text></svg>">
+<style>
+:root{
+  --bg:#F3F5F4; --card:#FFFFFF; --ink:#201E1A; --soft:#5B5952;
+  --line:#DDE2E0; --hair:#EAEEEC;
+  --blue:#1F5C86; --green:#5C7A3F; --gold:#9C7404; --rose:#9E3357;
+  --chip:#EDF1EF;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#15171A; --card:#1E2126; --ink:#E9E7E1; --soft:#9AA09C;
+    --line:#2E343A; --hair:#262B31;
+    --blue:#79ADD6; --green:#9BBE7C; --gold:#DDB44E; --rose:#DE8AA2;
+    --chip:#252A30;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:ui-serif,"New York",Georgia,serif;
+  font-size:17px;line-height:1.55;
+  overscroll-behavior-y:none;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom));
+}
+.sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;}
+
+/* ---------- sticky nav ---------- */
+header.top{
+  position:sticky;top:0;z-index:50;background:var(--bg);
+  padding:calc(8px + env(safe-area-inset-top)) 0 0;
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:2px 16px 8px;
+}
+.brand b{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);
+}
+.brand button{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.72rem;font-weight:600;letter-spacing:.02em;
+  background:none;border:0;color:var(--blue);padding:4px 0;cursor:pointer;
+}
+.pills{
+  display:flex;gap:6px;overflow-x:auto;padding:0 16px 10px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.pills::-webkit-scrollbar{display:none;}
+.pills button{
+  flex:0 0 auto;min-height:44px;padding:0 15px;
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.86rem;font-weight:600;letter-spacing:.02em;
+  background:var(--chip);color:var(--soft);
+  border:0;border-radius:22px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;
+}
+.pills button small{font-size:.64rem;font-weight:500;opacity:.7;}
+.pills button[aria-current="true"]{background:var(--ink);color:var(--bg);}
+.pills button[aria-current="true"] small{opacity:.75;}
+
+/* ---------- panels ---------- */
+main{padding:0 12px;}
+.panel[hidden]{display:none;}
+.dayhead{padding:26px 6px 14px;}
+.dayhead .kicker{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--blue);display:block;margin-bottom:5px;
+}
+.dayhead h1{font-size:1.72rem;font-weight:400;line-height:1.14;margin:0;letter-spacing:-.015em;}
+.dayhead p{margin:9px 0 0;color:var(--soft);font-size:.95rem;}
+
+.card{background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:14px;border:1px solid var(--hair);}
+
+/* ---------- rows ---------- */
+details.row, div.row{border-bottom:1px solid var(--hair);}
+details.row:last-child, div.row:last-child{border-bottom:0;}
+summary.head, div.row .head{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:14px 15px;min-height:44px;cursor:pointer;list-style:none;
+}
+summary.head::-webkit-details-marker{display:none;}
+.t{
+  flex:0 0 52px;
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-variant-numeric:tabular-nums;
+  font-size:.82rem;font-weight:700;letter-spacing:.01em;
+  padding-top:3px;color:var(--ink);
+}
+.row.fix .t{color:var(--gold);}
+.row.warn .t{color:var(--rose);}
+.h{flex:1;font-size:1.02rem;line-height:1.4;}
+.row.fix .h{font-weight:500;}
+.chev{
+  flex:0 0 14px;padding-top:6px;color:var(--soft);opacity:.5;
+  transition:transform .15s ease;
+}
+details[open] .chev{transform:rotate(90deg);}
+.body{padding:0 15px 15px 79px;color:var(--soft);font-size:.93rem;line-height:1.55;}
+.body p{margin:0 0 9px;}
+.body p:last-child{margin:0;}
+.row.warn .body{color:var(--rose);}
+@media (prefers-reduced-motion:reduce){.chev{transition:none;}}
+
+/* ---------- links & actions ---------- */
+a{color:var(--blue);}
+.acts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 15px;}
+.acts a{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.82rem;font-weight:600;text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;
+  padding:0 14px;border-radius:22px;background:var(--chip);color:var(--blue);
+}
+.acts a.solid{background:var(--blue);color:var(--card);}
+
+/* ---------- callouts ---------- */
+.note{
+  background:var(--card);border-radius:14px;border:1px solid var(--hair);
+  border-left:3px solid var(--blue);padding:14px 16px;margin-bottom:14px;
+}
+.note.hot{border-left-color:var(--rose);}
+.note h3{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  margin:0 0 7px;color:var(--soft);
+}
+.note.hot h3{color:var(--rose);}
+.note p{margin:0 0 8px;font-size:.95rem;}
+.note p:last-child{margin:0;}
+
+/* ---------- info section ---------- */
+.sect{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--soft);margin:26px 6px 10px;
+}
+.kv{display:flex;gap:12px;padding:13px 15px;border-bottom:1px solid var(--hair);align-items:flex-start;}
+.kv:last-child{border-bottom:0;}
+.kv .k{
+  flex:0 0 74px;
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--soft);padding-top:4px;
+}
+.kv .v{flex:1;font-size:.97rem;line-height:1.45;}
+.kv .v span{display:block;color:var(--soft);font-size:.86rem;margin-top:2px;}
+.kv .v code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.88rem;letter-spacing:.03em;
+}
+
+.task{display:flex;gap:12px;padding:14px 15px;border-bottom:1px solid var(--hair);align-items:flex-start;}
+.task:last-child{border-bottom:0;}
+.task input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--green);flex:0 0 22px;}
+.task .txt{flex:1;font-size:.98rem;line-height:1.4;}
+.task .txt span{display:block;color:var(--soft);font-size:.86rem;margin-top:3px;}
+
+footer{padding:30px 18px calc(40px + env(safe-area-inset-bottom));color:var(--soft);font-size:.84rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <b>Italien · 14.–19. sept 2026</b>
+    <button id="expand" class="sans" type="button">Vis alt</button>
+  </div>
+  <nav class="pills" id="pills">
+    <button data-p="p-info" type="button">Info</button>
+    <button data-p="p-1" type="button">Man<small>14/9</small></button>
+    <button data-p="p-2" type="button">Tir<small>15/9</small></button>
+    <button data-p="p-3" type="button">Ons<small>16/9</small></button>
+    <button data-p="p-4" type="button">Tor<small>17/9</small></button>
+    <button data-p="p-5" type="button">Fre<small>18/9</small></button>
+    <button data-p="p-6" type="button">Lør<small>19/9</small></button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================= INFO ================= -->
+<section class="panel" id="p-info" hidden>
+  <div class="dayhead">
+    <span class="kicker">Alt på ét sted</span>
+    <h1>Koder, adresser<br>og numre</h1>
+    <p>Det I skal kunne finde frem hurtigt, uden at scrolle gennem en dag.</p>
+  </div>
+
+  <div class="sect">Rejsen</div>
+  <div class="card">
+    <div class="kv"><div class="k">Ud</div><div class="v">Norwegian, CPH 7.05 → Rom Fiumicino 9.40<span>Bookingref. <code>XFM5VX</code> · 1 indchecket bagage</span></div></div>
+    <div class="kv"><div class="k">Tog</div><div class="v">Roma Termini 17.10 → Napoli Centrale 18.28<span>Booket, €44 · afgang fra Termini, ikke Tiburtina</span></div></div>
+    <div class="kv"><div class="k">Færge ud</div><div class="v">Molo Beverello 10.45 → Positano 11.45<span>Bookingkode <code>FH73QQ9488CB</code> · vær der 9.45</span></div></div>
+    <div class="kv"><div class="k">Færge hjem</div><div class="v">Positano 12.30 → Napoli 13.40<span>Vær ved molen 12.00</span></div></div>
+    <div class="kv"><div class="k">Hjem</div><div class="v">SAS, Napoli 20.35 → CPH 23.15<span>Bookingref. <code>XFRWJZ</code> · i lufthavnen senest 18.30</span></div></div>
+  </div>
+
+  <div class="sect">Hvor vi bor</div>
+  <div class="card">
+    <div class="kv"><div class="k">Man–ons</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&query=Piazza%20Dante%2074%2C%20Napoli">B&amp;B Citykey, Piazza Dante 74, 1° piano, 80135 Napoli</a><span>Indtjekning 15–21 · giv besked om ankomst ca. 19.15 · turistskat ofte kontant</span></div></div>
+    <div class="kv"><div class="k">Tor–lør</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&query=Villa%20Punta%20del%20Sole%2C%20Via%20G.%20Marconi%20183%2C%20Positano">Villa Punta del Sole, Via G. Marconi 183, Positano</a><span>Oppe på kystvejen i vestenden, 194 højdemeter over molen</span></div></div>
+  </div>
+
+  <div class="sect">Ring til dem</div>
+  <div class="card">
+    <div class="kv"><div class="k">Man</div><div class="v"><a href="tel:+393511118445">La Cucina di Nonna Luisa</a><span>+39 351 111 8445 · Via Domenico Capitelli 19</span></div></div>
+    <div class="kv"><div class="k">Ons</div><div class="v"><a href="tel:+39081455262">Antica Pizzeria Di Matteo</a><span>+39 081 455262 · tager ikke bordbestilling, ring kun for åbningstid</span></div></div>
+    <div class="kv"><div class="k">Tor</div><div class="v"><a href="tel:+39089875794">Lo Guarracino</a><span>+39 089 875794 · Via Positanesi d'America 12</span></div></div>
+    <div class="kv"><div class="k">Fre</div><div class="v"><a href="tel:+390899357739">Ristorante Adamo ed Eva</a><span>+39 089 935 7739 · Via Marconi 108</span></div></div>
+  </div>
+
+  <div class="sect">Praktisk</div>
+  <div class="card">
+    <div class="kv"><div class="k">Metro</div><div class="v">Napoli Linea 1<span>Garibaldi (under Centrale) → Dante er 5 stop, ca. €1,30. Municipio er stationen til havnen og Lungomare</span></div></div>
+    <div class="kv"><div class="k">Bus</div><div class="v">Positano, den interne orange<span>Via Marconi–Viale Pasitea–Piazza dei Mulini i sløjfe, ca. €1,50, hvert 20.–30. min. Billetten købes i en tobaksforretning, ikke i bussen</span></div></div>
+    <div class="kv"><div class="k">Taxa</div><div class="v">Napoli har faste takster<span>Aftal taksten før I sætter jer ind. Uber virker dårligt her: kun Black, få biler, dyrt. Brug holdepladsen, ikke folk der henvender sig</span></div></div>
+    <div class="kv"><div class="k">Kontant</div><div class="v">Hav sedler med<span>Turistskat begge steder, Locanda del Sole tager ikke kort, og bussen i Positano vil have kontanter i tobaksforretningen</span></div></div>
+    <div class="kv"><div class="k">Billetter</div><div class="v">Højhastighedstog valideres ikke<span>Den gule maskine gælder kun papirbilletter til regionaltog. Circumvesuviana skal derimod valideres</span></div></div>
+  </div>
+
+  <div class="sect">Skal bookes</div>
+  <div class="card">
+    <div class="task"><input type="checkbox" id="c1"><div class="txt">Sansevero, onsdag kl. 9.00<span>Booket ✓</span></div></div>
+    <div class="task"><input type="checkbox" id="c2"><div class="txt">Adamo ed Eva, fredag aften<span>Få borde, folk booker uger frem. Ring nu</span></div></div>
+    <div class="task"><input type="checkbox" id="c3"><div class="txt">Lo Guarracino, torsdag aften<span>Begrænset terrasse på klippestien</span></div></div>
+    <div class="task"><input type="checkbox" id="c4"><div class="txt">Borgo Marinari, onsdag aften<span>Ring og bekræft hvilken der har åbent: Zi Teresa lukker mandag, Donna Luisella onsdag</span></div></div>
+    <div class="task"><input type="checkbox" id="c5"><div class="txt">La Cucina di Nonna Luisa, mandag aften<span>Ring i løbet af dagen, I ankommer 20.15</span></div></div>
+    <div class="task"><input type="checkbox" id="c6"><div class="txt">Besked til B&amp;B Citykey<span>Ankomst ca. 19.15. Spørg om nøgle ved forsinkelse og om turistskat er kontant</span></div></div>
+    <div class="task"><input type="checkbox" id="c7"><div class="txt">Bagagedepot ved Piazza Municipio, lørdag<span>Book plads online, så I ved det inden I står der med kufferter</span></div></div>
+    <div class="task"><input type="checkbox" id="c8"><div class="txt">Nummer på en chauffør i Positano<span>Nødplan hvis færgen aflyses. Bed villaen om et konkret navn og nummer, ikke et løfte</span></div></div>
+  </div>
+
+  <div class="note hot">
+    <h3>Tager ikke reservationer</h3>
+    <p>Di Matteo, Scaturchio og Da Pupetto er kom-som-du-er. Di Matteo har kø 13–14, så gå 12.00 eller efter 14.00.</p>
+  </div>
+</section>
+
+<!-- ================= MANDAG ================= -->
+<section class="panel" id="p-1" hidden>
+  <div class="dayhead">
+    <span class="kicker">Mandag 14. september</span>
+    <h1>Rom, fra Colosseum<br>og nordvest</h1>
+    <p>Fem timer i byen mellem to faste tider. Kufferterne bliver på Termini.</p>
+  </div>
+
+  <div class="card">
+    <details class="row fix"><summary class="head"><div class="t">9.40</div><div class="h">Landing i Fiumicino</div><div class="chev">›</div></summary><div class="body"><p>Bagagebåndet tager 30–40 minutter med indchecket bagage. Regn ikke med at være ude før 10.15.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">10.25</div><div class="h">Leonardo Express til Termini</div><div class="chev">›</div></summary><div class="body"><p>Direkte lufthavnstog uden stop, 32 minutter, €14 pr. person, afgang hvert kvarter. Ingen booking nødvendig, køb på automaten.</p><p>Toget kommer ind på spor 23–24, altså halvtreds meter fra bagagedepotet. Det er den heldige del af dagen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.15</div><div class="h">Kufferter i depot ved perron 24</div><div class="chev">›</div></summary><div class="body"><p>KiPoint, ca. €6 pr. taske de første fem timer, timetillæg derefter. Med jeres tider ender I på €8–10 pr. taske.</p><p>Køen kan være 20–30 minutter i højsæson, både ved aflevering og afhentning. Læg det ind begge veje.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.40</div><div class="h">Metro B, Termini → Colosseo</div><div class="chev">›</div></summary><div class="body"><p>To stop, fem minutter. I kommer op ad rulletrappen med Colosseum direkte foran jer, hvilket er en af de bedre entréer i Europa.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.50</div><div class="h">Colosseum udefra, og Forum langs gaden</div><div class="chev">›</div></summary><div class="body"><p>Verdens største bevarede amfiteater, indviet år 80, med plads til omkring 50.000. Udefra ser I hele facaden med de tre etager af søjleordener: dorisk nederst, jonisk, korintisk øverst.</p><p>Forum Romanum, Roms politiske centrum i tusind år, ligger åbent nedenfor Via dei Fori Imperiali hele vejen. I ser det gratis ovenfra mens I går.</p><p>Fyrre minutter. Vil I ind, skal billetten være booket på forhånd, og så ryger Piazza Navona senere på dagen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">12.35</div><div class="h">Nordvest forbi Vittoriano</div><div class="chev">›</div></summary><div class="body"><p>Tyve minutters gang langs kejserfora. Vittoriano er det enorme hvide marmormonument for Italiens første konge, af romerne kaldet skrivemaskinen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">13.00</div><div class="h">Frokost ved Largo di Torre Argentina</div><div class="chev">›</div></summary><div class="body"><p>Fire republikanske templer i en udgravet firkant midt i trafikken, og stedet hvor Cæsar blev myrdet i år 44 f.Kr. I dag også en officiel kattekoloni.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">14.15</div><div class="h">Pantheon</div><div class="chev">›</div></summary><div class="body"><p>Verdens største uarmerede betonkuppel, bygget omkring år 126 og aldrig faldet sammen. Hullet i toppen er åbent, så det regner ind på gulvet, der har afløb.</p><p>Rafael ligger begravet indenfor. Entré €5, tidsslot bookes online samme morgen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">14.55</div><div class="h">Piazza Navona</div><div class="chev">›</div></summary><div class="body"><p>Pladsen har form som et romersk væddeløbsstadion, fordi den ligger oven på et. Berninis Firfloders-fontæne i midten fremstiller Donau, Ganges, Nilen og Rio de la Plata, altså de fire kendte verdensdele.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">15.35</div><div class="h">Trevi-fontænen</div><div class="chev">›</div></summary><div class="body"><p>Endestationen for en romersk akvædukt fra år 19 f.Kr., der stadig fører vand hertil.</p><p>Kom fra nord ad Via del Tritone. Trængslen er værst fra syd. Tyve minutter er alt den kræver.</p></div></details>
+
+    <div class="row"><div class="head"><div class="t">16.10</div><div class="h">Metro A, Barberini → Termini</div></div></div>
+
+    <div class="row"><div class="head"><div class="t">16.40</div><div class="h">Hent bagage</div></div></div>
+
+    <details class="row fix"><summary class="head"><div class="t">17.10</div><div class="h">Tog til Napoli, ankomst 18.28</div><div class="chev">›</div></summary><div class="body"><p>Booket. Afgang fra Roma Termini, ikke Tiburtina. Højhastighedstog skal ikke valideres i den gule maskine.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">18.35</div><div class="h">Metro Linea 1, Garibaldi → Dante</div><div class="chev">›</div></summary><div class="body"><p>Stationen ligger under Napoli Centrale, så I skal ikke ud på gaden. Fem stop, ca. €1,30. Dante-stationen har opgang direkte på selve pladsen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">19.15</div><div class="h">Indtjekket, Piazza Dante 74</div><div class="chev">›</div></summary><div class="body"><p>Turistskat betales ofte kontant ved ankomst. Spørg om nøgleafhentning hvis I bliver forsinket.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">20.15</div><div class="h">Aftensmad: La Cucina di Nonna Luisa</div><div class="chev">›</div></summary><div class="body"><p>Via Domenico Capitelli 19, tre minutters gang ved Piazza del Gesù. Klassisk napolitansk pasta, kendt for spaghetti alla Nerano med courgette. Åbent til 23.30.</p><p>Ring i løbet af dagen og reservér.</p></div></details>
+  </div>
+
+  <div class="acts">
+    <a class="solid" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Colosseo%2C+Roma&destination=Fontana+di+Trevi%2C+Roma&waypoints=Largo+di+Torre+Argentina%2C+Roma%7CPantheon%2C+Roma%7CPiazza+Navona%2C+Roma">Gåruten i Rom</a>
+    <a href="tel:+393511118445">Ring til Nonna Luisa</a>
+  </div>
+
+  <div class="note hot">
+    <h3>Dagens eneste rigtige risiko</h3>
+    <p>Bagagedepotets kø, begge veje. Rammer den forkert, ryger Trevi. Toget kl. 17.10 kan ikke flyttes, og billetten kan ikke bruges på en senere afgang.</p>
+  </div>
+</section>
+
+<!-- ================= TIRSDAG ================= -->
+<section class="panel" id="p-2" hidden>
+  <div class="dayhead">
+    <span class="kicker">Tirsdag 15. september</span>
+    <h1>Pompeji og Vesuv</h1>
+    <p>Booket heldagstur med guide og transport. Ugens hårdeste dag, så aftenen er tom med vilje.</p>
+  </div>
+
+  <div class="card">
+    <details class="row"><summary class="head"><div class="t">7.30</div><div class="h">Morgenmad på hotellet</div><div class="chev">›</div></summary><div class="body"><p>Inkluderet. Spis ordentligt, turen giver jer ikke frokost før midt på dagen.</p></div></details>
+
+    <details class="row fix"><summary class="head"><div class="t">9.00</div><div class="h">Turen starter</div><div class="chev">›</div></summary><div class="body"><p>Bekræft opsamlingssted og præcist mødetidspunkt dagen før. Mange ture samler op 30–45 minutter før den annoncerede starttid.</p></div></details>
+
+    <details class="row warn"><summary class="head"><div class="t">Pak</div><div class="h">Sko med profil, to liter vand, solhat</div><div class="chev">›</div></summary><div class="body"><p>Vesuv-keglen er løst grus, 20–30 minutter op fra parkeringen. Der er ingen skygge hverken i Pompeji eller på toppen.</p><p>Vinden på 1.000 meter er kold selv i september, så tag et lag med. Sporet lukkes ved vejrvarsler, og vejret deroppe ligner ikke vejret i Napoli.</p></div></details>
+
+    <details class="row warn"><summary class="head"><div class="t">Pak</div><div class="h">Taske højst 30×30×15 cm</div><div class="chev">›</div></summary><div class="body"><p>Pompeji tillader ikke større tasker inde på området. De skal i garderoben, og det koster tid I ikke selv styrer, når I er på gruppens køreplan.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">Se</div><div class="h">Det I skal sikre jer at nå i Pompeji</div><div class="chev">›</div></summary><div class="body"><p>Forum med Vesuv i baggrunden. Casa del Fauno, byens største privathus. Badeanlægget Terme Stabiane med de bevarede stuklofter. Og gipsafstøbningerne af de omkomne, som blev lavet ved at hælde gips i hulrummene efter kroppene.</p><p>Alexander-mosaikken selv hænger ikke i Pompeji, den er på Museo Archeologico i Napoli.</p></div></details>
+
+    <details class="row fix"><summary class="head"><div class="t">17.00</div><div class="h">Turen slutter, hjemme ca. 17.30</div><div class="chev">›</div></summary><div class="body"><p>Bad og en time vandret. Otte timer i varmen med keglen ovenpå er ugens hårdeste dag. Læg ikke noget oveni.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">20.00</div><div class="h">Aftensmad inden for tre minutters gang</div><div class="chev">›</div></summary><div class="body"><p>La Cucina di Nonna Luisa igen hvis mandagen var god, ellers Locanda del Sole i en sidegade: mindre, mere hjemligt, tager ikke kort.</p></div></details>
+  </div>
+
+  <div class="acts">
+    <a href="tel:+393511118445">Ring til Nonna Luisa</a>
+  </div>
+
+  <div class="note">
+    <h3>Hvorfor Lungomare ikke ligger her</h3>
+    <p>Den lå oprindeligt tirsdag aften. Efter otte timer på Vesuv og i Pompeji går I ikke frivilligt en tur langs havnen. Den er flyttet til onsdag, hvor ruten alligevel ender to hundrede meter fra vandet.</p>
+  </div>
+</section>
+
+<!-- ================= ONSDAG ================= -->
+<section class="panel" id="p-3" hidden>
+  <div class="dayhead">
+    <span class="kicker">Onsdag 16. september</span>
+    <h1>Kapellet, gaderne<br>og havnefronten</h1>
+    <p>Én lang sløjfe fra Piazza Dante ned til vandet. Alt til fods, metro hjem til sidst.</p>
+  </div>
+
+  <div class="card">
+    <div class="row"><div class="head"><div class="t">8.15</div><div class="h">Morgenmad på hotellet</div></div></div>
+
+    <details class="row fix"><summary class="head"><div class="t">9.00</div><div class="h">Sansevero-kapellet</div><div class="chev">›</div></summary><div class="body"><p>Privat gravkapel, ombygget i 1750'erne af fyrst Raimondo di Sangro: alkymist, opfinder og frimurer.</p><p>Den tilslørede Kristus er hugget i ét stykke marmor, hvor sløret er en del af selve blokken. Samtiden nægtede at tro på det og påstod fyrsten havde forstenet et rigtigt klæde.</p><p>Nedenunder står to anatomiske modeller med komplet blodkredsløb i tråd og voks. Hvordan de er fremstillet er stadig ikke afklaret.</p><p>I er andet hold ind i bygningen den dag. Det er hele grunden til at tage 9.00 frem for 11.00, hvor dagsturene rammer.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">9.45</div><div class="h">Scaturchio, Piazza San Domenico</div><div class="chev">›</div></summary><div class="body"><p>Halvfjerds meter fra kapellets udgang. Konditori fra 1905.</p><p>I har spist morgenmad, men en sfogliatella riccia, den sprøde vifteformede med ricotta og kandiseret citrusskal, er ikke morgenmad. Det er research.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">10.15</div><div class="h">Santa Chiara</div><div class="chev">›</div></summary><div class="body"><p>Fem minutter mod vest. Kirken er gratis og gotisk, genopbygget efter et bombeangreb i 1943.</p><p>Klosterhaven bagved koster ca. €7 og er grunden til at komme: søjlegange og bænke helt beklædt med gulblå majolikafliser fra 1740, med vindruer, citroner og landskaber som motiver.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.15</div><div class="h">Østpå ad Spaccanapoli</div><div class="chev">›</div></summary><div class="body"><p>Gaden hedder officielt Via Benedetto Croce og senere Via San Biagio dei Librai. Kaldenavnet betyder den der kløver Napoli.</p><p>Den skærer snorlige tværs gennem hele den gamle by, fordi den følger en græsk gadeplan fra 400-tallet f.Kr. Fra en høj position kan man se snittet i byen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.30</div><div class="h">Via Mezzocannone, genbrug</div><div class="chev">›</div></summary><div class="body"><p>Universitetsgaden ned mod Corso Umberto, tæt pakket med secondhand.</p><p><b>POP 21</b>, nr. 81: den største, ligger for det meste under jorden. <b>I Love Vintage</b>, nr. 135: meget denim og læder. <b>Advintage</b>, nr. 57: mindre og bedre sorteret.</p><p>Alle åbner 9.30. Priser typisk €10–30. Læg en time, I har tiden.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">12.45</div><div class="h">San Gregorio Armeno op til Tribunali</div><div class="chev">›</div></summary><div class="body"><p>Julekrybbegaden. Værkstederne har lavet presepe-figurer i århundreder og laver stadig nye hvert år, inklusive politikere, popstjerner og Maradona.</p><p>Et kvarters kig, og den ligger på vejen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">13.15</div><div class="h">Frokost: Antica Pizzeria Di Matteo</div><div class="chev">›</div></summary><div class="body"><p>Via dei Tribunali 94. Fra 1936, godkendt af pizzakonsortiet AVPN. Margherita omkring €5.</p><p>Man går ind forbi ovnene og op ad trappen til en kantine hvor der bliver råbt. Prøv den friterede pizza fra disken ved indgangen.</p><p>Tager ikke reservationer. Gå 12.00 eller efter 14.00, ikke 13.00, ellers står I i kø.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">14.45</div><div class="h">Piazza Bellini</div><div class="chev">›</div></summary><div class="body"><p>Resterne af den græske bymur fra 400-tallet f.Kr. ligger udgravet midt på pladsen, fire meter under gadeniveau.</p><p>Et af de få steder i den gamle by med træer, skygge og siddepladser. Spazio Nea er café og boghandel i ét. Læg halvanden time.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">16.00</div><div class="h">Via Toledo og Quartieri Spagnoli</div><div class="chev">›</div></summary><div class="body"><p>Via Toledo er byens hovedstrøg, anlagt 1536. Kvartererne op ad bakke til højre blev bygget som kaserner til spanske tropper: stejle, smalle gader med vasketøj hængende over hovedet.</p><p>Der er ingen rute, gå bare ind. Se også Toledo metrostation undervejs, hvis blå mosaikskakt jævnligt kåres som Europas smukkeste.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">17.00</div><div class="h">Galleria Umberto I</div><div class="chev">›</div></summary><div class="body"><p>Glasoverdækket arkade fra 1890, bygget som del af saneringen efter koleraepidemien. Gratis og altid åben.</p><p>Teatro San Carlo lige overfor er Europas ældste operahus stadig i brug, fra 1737, altså 41 år ældre end La Scala.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">17.30</div><div class="h">Piazza del Plebiscito</div><div class="chev">›</div></summary><div class="body"><p>Byens store ceremonielle plads. Den halvcirkelformede søjlegang om San Francesco di Paola-kirken på den ene side, kongepaladset på den anden. Bedst i det sene lys.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">18.15</div><div class="h">Lungomare og Castel dell'Ovo</div><div class="chev">›</div></summary><div class="body"><p>Femten minutter vestpå langs vandet. Borgen er Napolis ældste, bygget på øen hvor grækerne grundlagde Parthenope.</p><p>Navnet betyder Ægborgen, efter et sagn om at Vergil lagde et magisk æg i fundamentet: knækker det, falder byen.</p><p>Borgen har været delvist lukket for renovering. Udsigten fra kajen er pointen uanset.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">20.00</div><div class="h">Aftensmad i Borgo Marinari</div><div class="chev">›</div></summary><div class="body"><p>Den lille fiskerhavn under borgen, spærret af for biler. Zi Teresa eller Donna Luisella, begge med udsigt til Vesuv over vandet.</p><p>Ring og bekræft hvilken der har åbent: Zi Teresa lukker mandag, Donna Luisella onsdag, og de oplysninger er ikke altid opdaterede online.</p><p>Metro L1 fra Municipio hjem til Dante bagefter.</p></div></details>
+  </div>
+
+  <div class="acts">
+    <a class="solid" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Cappella+Sansevero%2C+Napoli&destination=Borgo+Marinari%2C+Napoli&waypoints=Complesso+Monumentale+di+Santa+Chiara%2C+Napoli%7CVia+Mezzocannone%2C+Napoli%7CVia+San+Gregorio+Armeno%2C+Napoli%7CPiazza+Bellini%2C+Napoli%7CGalleria+Umberto+I%2C+Napoli%7CPiazza+del+Plebiscito%2C+Napoli">Hele dagens gårute</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Via%20Mezzocannone%2C%20Napoli">Via Mezzocannone</a>
+  </div>
+</section>
+
+<!-- ================= TORSDAG ================= -->
+<section class="panel" id="p-4" hidden>
+  <div class="dayhead">
+    <span class="kicker">Torsdag 17. september</span>
+    <h1>Til Positano</h1>
+    <p>Færge om formiddagen, stigningen op til villaen, og resten af dagen nedad igen.</p>
+  </div>
+
+  <div class="card">
+    <div class="row"><div class="head"><div class="t">8.00</div><div class="h">Morgenmad, pakke, tjek ud</div></div></div>
+
+    <details class="row"><summary class="head"><div class="t">9.05</div><div class="h">Metro L1, Dante → Municipio</div><div class="chev">›</div></summary><div class="body"><p>Fem minutters gang fra stationen ned til molen.</p></div></details>
+
+    <details class="row fix"><summary class="head"><div class="t">9.45</div><div class="h">Molo Beverello</div><div class="chev">›</div></summary><div class="body"><p>Havnen er under ombygning og skiltningen er dårlig. Jeres booking siger én time før afgang, så tag den bogstaveligt.</p></div></details>
+
+    <details class="row fix"><summary class="head"><div class="t">10.45</div><div class="h">Afgang, i Positano 11.45</div><div class="chev">›</div></summary><div class="body"><p>Sejladsen går rundt om Sorrento-halvøen og ind langs Amalfikysten. Sæt jer i venstre side når I ser fremad, der ligger kysten.</p></div></details>
+
+    <details class="row warn"><summary class="head"><div class="t">12.00</div><div class="h">Op til villaen til fods</div><div class="chev">›</div></summary><div class="body"><p>1,7 km og 194 højdemeter. Maps siger 33 minutter, men det er uden kufferter og uden middagssol. Regn med 45–50.</p><p>194 højdemeter svarer til at gå op i en tresindstyvende sal. Det er ikke umuligt, men vurder det på molen, ikke nu.</p><p>Taxaerne holder ved Spiaggia Grande og Piazza dei Mulini, ca. €20–25 op. Den interne orange bus kører også, men den er lille og fyldt midt på dagen.</p></div></details>
+
+    <div class="row"><div class="head"><div class="t">13.00</div><div class="h">Indtjekning, Villa Punta del Sole</div></div></div>
+
+    <details class="row"><summary class="head"><div class="t">13.45</div><div class="h">Frokost: Da Gabrisa</div><div class="chev">›</div></summary><div class="body"><p>Viale Pasitea 221, få minutter fra villaen. Terrasse ud over byen, og ikke turistfælde-prisniveau, hvilket er sjældent her.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">15.30</div><div class="h">Den interne bus ned</div><div class="chev">›</div></summary><div class="body"><p>Lille orange bus, ca. €1,50, kører Via Marconi–Viale Pasitea–Piazza dei Mulini i sløjfe hvert 20.–30. minut.</p><p>Billetten købes i en tobaksforretning, ikke i bussen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">16.00</div><div class="h">Spiaggia Grande</div><div class="chev">›</div></summary><div class="body"><p>Hovedstranden, mørkegrå sten frem for sand. Solsengene i rækkerne forrest koster; striberne i hver ende er gratis.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">17.30</div><div class="h">Santa Maria Assunta</div><div class="chev">›</div></summary><div class="body"><p>Kirken med den gulgrønne majolikakuppel, altså den I så fra færgen.</p><p>Indenfor hænger en byzantinsk sortmadonna fra 1200-tallet. Ifølge sagnet blev den stjålet fra et skib, der ikke kunne sejle videre før den kom i land, og byen har navn efter ordren om at sætte den ned: <i>posa, posa</i>.</p><p>Åben til 20.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">18.30</div><div class="h">Via Positanesi d'America</div><div class="chev">›</div></summary><div class="body"><p>Klippestien mellem Spiaggia Grande og Fornillo, hugget ind i bjergsiden over vandet. Ti minutter, og byens bedste gåtur.</p><p>Opkaldt efter de mange positanesere der udvandrede til USA omkring år 1900, da byen var ved at affolkes.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">19.45</div><div class="h">Aftensmad: Lo Guarracino</div><div class="chev">›</div></summary><div class="body"><p>Via Positanesi d'America 12, altså direkte på klippestien under et tag af bougainvillea, med udsigt til Li Galli-øerne.</p><p>Fisk og pizza, mindre pralende og lidt billigere end stederne på hovedstrøget. Reservér.</p><p>Bus eller taxa hjem op ad Viale Pasitea. Gå ikke op til fods om aftenen.</p></div></details>
+  </div>
+
+  <div class="acts">
+    <a class="solid" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Spiaggia+Grande%2C+Positano&destination=Fornillo+Beach%2C+Positano&waypoints=Chiesa+di+Santa+Maria+Assunta%2C+Positano%7CVia+Positanesi+d%27America%2C+Positano">Klippestien til Fornillo</a>
+    <a href="tel:+39089875794">Ring til Lo Guarracino</a>
+  </div>
+</section>
+
+<!-- ================= FREDAG ================= -->
+<section class="panel" id="p-5" hidden>
+  <div class="dayhead">
+    <span class="kicker">Fredag 18. september</span>
+    <h1>Byen, butikkerne<br>og stranden</h1>
+    <p>Ingen båd, ingen vandring, ingen faste tider før aftensmaden.</p>
+  </div>
+
+  <div class="card">
+    <div class="row"><div class="head"><div class="t">9.00</div><div class="h">Lang morgenmad på terrassen</div></div></div>
+
+    <details class="row"><summary class="head"><div class="t">10.15</div><div class="h">Gå ned ad Viale Pasitea</div><div class="chev">›</div></summary><div class="body"><p>Hele vejen ned er nedad, hvilket er den rigtige retning at gå den. Vejen snor sig i hårnålesving gennem hele byen, så I ser Positano ovenfra hele vejen. Tyve minutter.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">10.45</div><div class="h">Via dei Mulini og Piazza dei Mulini</div><div class="chev">›</div></summary><div class="body"><p>Den brostensbelagte handelsgade fra byen ned til stranden, og der hvor butikkerne ligger.</p><p>Keramik, håndlavet linned og den løse Positano-kjole, som byen har eksporteret siden 1950'erne, da modehusene opdagede stedet.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">11.30</div><div class="h">Bestil sandaler efter mål</div><div class="chev">›</div></summary><div class="body"><p>Byens ægte håndværk. Flere værksteder på og omkring Via dei Mulini tager mål og syr et par mens I er i byen, typisk €60–120 og klar samme eftermiddag.</p><p>Bestil om formiddagen, hent inden I går op. Spørg villaen hvilke værksteder der stadig gør det, de ved det.</p></div></details>
+
+    <div class="row"><div class="head"><div class="t">13.00</div><div class="h">Frokost nede i byen</div></div></div>
+
+    <details class="row"><summary class="head"><div class="t">14.30</div><div class="h">Fornillo-stranden</div><div class="chev">›</div></summary><div class="body"><p>Ti minutter ad klippestien vestpå. Roligere end Spiaggia Grande, mest lokale, og sten frem for sand.</p><p>Da Pupetto ligger for enden hvis I vil have en drink med fødderne tæt på vandet.</p></div></details>
+
+    <div class="row"><div class="head"><div class="t">17.00</div><div class="h">Hent sandalerne, aperitivo</div></div></div>
+
+    <details class="row"><summary class="head"><div class="t">18.30</div><div class="h">Bus eller taxa op</div><div class="chev">›</div></summary><div class="body"><p>Gå ikke op til fods efter en hel dag. Det er stadig 194 højdemeter, og de bliver ikke færre om aftenen.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">20.00</div><div class="h">Aftensmad: Adamo ed Eva</div><div class="chev">›</div></summary><div class="body"><p>Via Marconi 108, ti minutters gang fra villaen på jeres egen vej. Altså den ene aften hvor I ikke skal transporteres hjem bagefter.</p><p>Terrasse med tag der kan køres til side, udsigt over hele bugten. Ugens dyre aften, regn med €150–200 for to.</p><p>Skal bookes. Ring nu, ikke i Positano.</p></div></details>
+  </div>
+
+  <div class="acts">
+    <a href="tel:+390899357739">Ring til Adamo ed Eva</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Via%20dei%20Mulini%2C%20Positano">Via dei Mulini</a>
+  </div>
+</section>
+
+<!-- ================= LØRDAG ================= -->
+<section class="panel" id="p-6" hidden>
+  <div class="dayhead">
+    <span class="kicker">Lørdag 19. september</span>
+    <h1>Hjem, med margen</h1>
+    <p>Tidlig færge med vilje. Eftermiddagen er en sidste halv dag i Napoli, ikke spildtid.</p>
+  </div>
+
+  <div class="card">
+    <details class="row"><summary class="head"><div class="t">8.30</div><div class="h">Morgenmad, og tjek færgestatus</div><div class="chev">›</div></summary><div class="body"><p>Positano har ingen egentlig havn, kun en udsat mole, så afgange kan aflyses ved hård sø. Tjek allerede ved morgenmaden, ikke kl. 12.</p><p>Ser det marginalt ud, så ring til chaufføren med det samme frem for at vente og se.</p></div></details>
+
+    <div class="row"><div class="head"><div class="t">9.30</div><div class="h">Tjek ud, bagagen bliver stående</div></div></div>
+
+    <div class="row"><div class="head"><div class="t">10.00</div><div class="h">Ned i byen: sidste bad eller sidste runde</div></div></div>
+
+    <div class="row"><div class="head"><div class="t">11.30</div><div class="h">Hent bagage, ned til molen</div></div></div>
+
+    <details class="row fix"><summary class="head"><div class="t">12.30</div><div class="h">Færge til Napoli, ankomst 13.40</div><div class="chev">›</div></summary><div class="body"><p>Vær ved molen 12.00.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">14.00</div><div class="h">Bagage i depot ved Piazza Municipio</div><div class="chev">›</div></summary><div class="body"><p>Fem minutters gang fra molen. Book en plads online inden lørdag, så I ved det med sikkerhed inden I står der.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">14.30</div><div class="h">Sidste frokost ved Lungomare</div><div class="chev">›</div></summary><div class="body"><p>Eller Borgo Marinari igen hvis onsdagen var god. I har fire timer og ingen forpligtelser.</p></div></details>
+
+    <details class="row"><summary class="head"><div class="t">17.15</div><div class="h">Til Capodichino</div><div class="chev">›</div></summary><div class="body"><p>Taxa til fast takst, ca. €25 fra havneområdet, 25–30 minutter. Alibus fra Piazza Municipio er billigere og tager længere.</p><p>Aftal taksten før I sætter jer ind.</p></div></details>
+
+    <details class="row fix"><summary class="head"><div class="t">20.35</div><div class="h">Fly til København, lander 23.15</div><div class="chev">›</div></summary><div class="body"><p>I lufthavnen senest 18.30.</p></div></details>
+  </div>
+
+  <div class="note hot">
+    <h3>Hvis færgen ikke sejler</h3>
+    <p>Ring til chaufføren med det samme. Positano til Capodichino ad landevejen tager 1t30–2t, så selv fra kl. 9 er der masser af tid.</p>
+    <p>Ruten over Sorrento med bus og Circumvesuviana tager over tre timer og er ikke en nødplan på en flydag.</p>
+  </div>
+
+  <div class="note">
+    <h3>Hvorfor ikke 16.24</h3>
+    <p>Den sene færge lander jer på Beverello 17.49 og i lufthavnen ca. 18.30. Det går, lige indtil den aflyses, og så skal I have en chauffør i Positano med tre kvarters varsel på en lørdag i september, hvor kystens biler er bookede til hoteltransfers.</p>
+    <p>Med 12.30 bytter I fire timer i Positano til fire timer i Napoli. I mister ikke tiden, den flytter sig.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>Sidst opdateret 9. september 2026 · god tur</footer>
+
+<script>
+(function(){
+  var pills = Array.prototype.slice.call(document.querySelectorAll('#pills button'));
+  var panels = {};
+  pills.forEach(function(b){ panels[b.dataset.p] = document.getElementById(b.dataset.p); });
+
+  function show(id){
+    pills.forEach(function(b){
+      var on = b.dataset.p === id;
+      b.setAttribute('aria-current', on ? 'true' : 'false');
+      panels[b.dataset.p].hidden = !on;
+      if (on) b.scrollIntoView({block:'nearest', inline:'center'});
+    });
+    window.scrollTo(0,0);
+  }
+
+  pills.forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.p); });
+  });
+
+  // Åbn på dagen, hvis vi er midt i turen
+  var days = ['2026-09-14','2026-09-15','2026-09-16','2026-09-17','2026-09-18','2026-09-19'];
+  var now = new Date();
+  var today = now.getFullYear() + '-' +
+              String(now.getMonth()+1).padStart(2,'0') + '-' +
+              String(now.getDate()).padStart(2,'0');
+  var i = days.indexOf(today);
+  show(i >= 0 ? 'p-' + (i+1) : 'p-info');
+
+  // Vis alt / skjul alt
+  var btn = document.getElementById('expand');
+  var open = false;
+  btn.addEventListener('click', function(){
+    open = !open;
+    var vis = document.querySelector('.panel:not([hidden])');
+    if (!vis) return;
+    Array.prototype.forEach.call(vis.querySelectorAll('details'), function(d){ d.open = open; });
+    btn.textContent = open ? 'Skjul alt' : 'Vis alt';
+  });
+})();
+</script>
+</body>
+</html>
